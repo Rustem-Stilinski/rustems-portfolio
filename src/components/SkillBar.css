@@ -1,0 +1,43 @@
+.skillbar {
+  list-style: none;
+}
+
+.skillbar__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 7px;
+}
+
+.skillbar__name {
+  font-weight: 500;
+  font-size: 0.96rem;
+}
+
+.skillbar__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate);
+}
+
+.skillbar__track {
+  height: 7px;
+  border-radius: 999px;
+  background: var(--mist);
+  overflow: hidden;
+}
+
+.skillbar__fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pine), var(--pine-deep));
+  width: 0;
+  animation: fill 0.9s var(--ease) forwards;
+}
+
+@keyframes fill {
+  from {
+    width: 0;
+  }
+}

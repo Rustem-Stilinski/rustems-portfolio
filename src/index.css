@@ -1,0 +1,234 @@
+
+:root {
+  --paper: #f6f5f1;
+  --surface: #fffffe;
+  --ink: #16191c;
+  --slate: #5a6068;
+  --pine: #1f5f4e;
+  --pine-deep: #16463a;
+  --signal: #e2603a;
+  --edge: #e2e0d8;
+  --mist: #eceae3;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --maxw: 1080px;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(22, 25, 28, 0.04), 0 8px 24px rgba(22, 25, 28, 0.06);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Dark theme — toggled via data-theme on <html> (see ThemeContext) */
+[data-theme='dark'] {
+  --paper: #12150f;
+  --surface: #191d16;
+  --ink: #eef0ea;
+  --slate: #9aa295;
+  --pine: #6fcab0;
+  --pine-deep: #8fe0c8;
+  --signal: #f08a68;
+  --edge: #2a2f26;
+  --mist: #1f231c;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto;
+  }
+}
+
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+main {
+  flex: 1;
+}
+
+.page {
+  padding-block: clamp(48px, 8vw, 96px);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--pine);
+  text-transform: lowercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--pine);
+  opacity: 0.6;
+}
+
+.page-title {
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  margin-bottom: 14px;
+}
+
+.lead {
+  font-size: 1.12rem;
+  color: var(--slate);
+  max-width: 60ch;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: transform 0.18s var(--ease), background 0.18s var(--ease),
+    border-color 0.18s var(--ease), color 0.18s var(--ease);
+}
+
+.btn-primary {
+  background: var(--pine);
+  color: var(--paper);
+}
+
+.btn-primary:hover {
+  background: var(--signal);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  border-color: var(--edge);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  border-color: var(--pine);
+  color: var(--pine);
+  transform: translateY(-2px);
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease),
+    border-color 0.22s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: transparent;
+}
+
+/* Page-enter animation */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.5s var(--ease) both;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 16px;
+  border-radius: 8px;
+  z-index: 100;
+  transition: top 0.2s var(--ease);
+}
+
+.skip-link:focus {
+  top: 16px;
+}

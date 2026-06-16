@@ -1,0 +1,22 @@
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--edge);
+  background: transparent;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  line-height: 1;
+  transition: border-color 0.18s var(--ease), transform 0.18s var(--ease);
+}
+
+.theme-toggle:hover {
+  border-color: var(--pine);
+  transform: rotate(-12deg);
+}
+
+.theme-toggle__icon {
+  display: block;
+}

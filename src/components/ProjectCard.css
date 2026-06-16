@@ -1,0 +1,48 @@
+.project {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+}
+
+.project__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project__title {
+  font-size: 1.2rem;
+}
+
+.project__year {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--slate);
+  flex-shrink: 0;
+}
+
+.project__blurb {
+  color: var(--slate);
+  font-size: 0.96rem;
+  flex: 1;
+}
+
+.project__tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.project__tags li {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--mist);
+  color: var(--ink);
+}
